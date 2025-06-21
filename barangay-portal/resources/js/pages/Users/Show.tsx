@@ -49,7 +49,7 @@ export default function UsersShow({ user }: Props) {
             hour: '2-digit',
             minute: '2-digit',
         });
-    };    return (
+    }; return (
         <AppLayout
             breadcrumbs={[
                 { title: 'Dashboard', href: route('dashboard') },
@@ -60,7 +60,7 @@ export default function UsersShow({ user }: Props) {
             <Head title={`User - ${user.name}`} />
 
             <div className="flex h-full flex-1 flex-col p-8 space-y-8">
-                <PageHeader 
+                <PageHeader
                     title={user.name}
                     description="User details and information"
                 >
@@ -96,55 +96,55 @@ export default function UsersShow({ user }: Props) {
                                     Core user account details
                                 </CardDescription>
                             </CardHeader>
-                        <CardContent className="space-y-4">
-                            <div>
-                                <dt className="text-sm font-medium text-muted-foreground">Name</dt>
-                                <dd className="text-sm">{user.name}</dd>
-                            </div>
-                            <div>
-                                <dt className="text-sm font-medium text-muted-foreground">Email</dt>
-                                <dd className="text-sm">{user.email}</dd>
-                            </div>
-                            <div>
-                                <dt className="text-sm font-medium text-muted-foreground">Status</dt>
-                                <dd className="text-sm">
-                                    <Badge
-                                        variant={
-                                            user.email_verified_at ? 'default' : 'secondary'
-                                        }
-                                    >
-                                        {user.email_verified_at ? 'Verified' : 'Unverified'}
-                                    </Badge>
-                                </dd>
-                            </div>                        </CardContent>
-                    </Card>
-
-                    <Card className="shadow-sm border-0 bg-card">
-                        <CardHeader className="pb-4">
-                            <CardTitle className="text-xl font-semibold mb-2">Account Timestamps</CardTitle>
-                            <CardDescription className="text-sm">
-                                When this account was created and last updated
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4 pt-2">
-                            <div>
-                                <dt className="text-sm font-medium text-muted-foreground">Created At</dt>
-                                <dd className="text-sm">{formatDate(user.created_at)}</dd>
-                            </div>
-                            <div>
-                                <dt className="text-sm font-medium text-muted-foreground">Updated At</dt>
-                                <dd className="text-sm">{formatDate(user.updated_at)}</dd>
-                            </div>
-                            {user.email_verified_at && (
+                            <CardContent className="space-y-4">
                                 <div>
-                                    <dt className="text-sm font-medium text-muted-foreground">
-                                        Email Verified At
-                                    </dt>
-                                    <dd className="text-sm">{formatDate(user.email_verified_at)}</dd>
+                                    <dt className="text-sm font-medium text-muted-foreground">Name</dt>
+                                    <dd className="text-sm">{user.name}</dd>
                                 </div>
-                            )}
-                        </CardContent>
-                    </Card>
+                                <div>
+                                    <dt className="text-sm font-medium text-muted-foreground">Email</dt>
+                                    <dd className="text-sm">{user.email}</dd>
+                                </div>
+                                <div>
+                                    <dt className="text-sm font-medium text-muted-foreground">Status</dt>
+                                    <dd className="text-sm">
+                                        <Badge
+                                            variant={
+                                                user.email_verified_at ? 'default' : 'secondary'
+                                            }
+                                        >
+                                            {user.email_verified_at ? 'Verified' : 'Unverified'}
+                                        </Badge>
+                                    </dd>
+                                </div>                        </CardContent>
+                        </Card>
+
+                        <Card className="shadow-sm border-0 bg-card">
+                            <CardHeader className="pb-4">
+                                <CardTitle className="text-xl font-semibold mb-2">Account Timestamps</CardTitle>
+                                <CardDescription className="text-sm">
+                                    When this account was created and last updated
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-4 pt-2">
+                                <div>
+                                    <dt className="text-sm font-medium text-muted-foreground">Created At</dt>
+                                    <dd className="text-sm">{formatDate(user.created_at)}</dd>
+                                </div>
+                                <div>
+                                    <dt className="text-sm font-medium text-muted-foreground">Updated At</dt>
+                                    <dd className="text-sm">{formatDate(user.updated_at)}</dd>
+                                </div>
+                                {user.email_verified_at && (
+                                    <div>
+                                        <dt className="text-sm font-medium text-muted-foreground">
+                                            Email Verified At
+                                        </dt>
+                                        <dd className="text-sm">{formatDate(user.email_verified_at)}</dd>
+                                    </div>
+                                )}
+                            </CardContent>
+                        </Card>
                     </div>
                 </Section>
             </div>

@@ -4,14 +4,14 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarGroup, SidebarGroupLabel } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { 
-    BookOpen, 
-    Folder, 
-    LayoutGrid, 
-    Users, 
-    Building2, 
-    FileText, 
-    Settings, 
+import {
+    BookOpen,
+    Folder,
+    LayoutGrid,
+    Users,
+    Building2,
+    FileText,
+    Settings,
     BarChart3,
     Calendar,
     MessageSquare,
@@ -144,7 +144,7 @@ export function AppSidebar() {
 
             <SidebarContent>
                 <NavMain items={dashboardItems} />
-                
+
                 <SidebarGroup>
                     <SidebarGroupLabel>Management</SidebarGroupLabel>
                     <NavMain items={managementItems} />

@@ -14,13 +14,13 @@ interface StatsCardProps {
     className?: string;
 }
 
-export function StatsCard({ 
-    title, 
-    value, 
-    description, 
-    icon: Icon, 
-    trend, 
-    className 
+export function StatsCard({
+    title,
+    value,
+    description,
+    icon: Icon,
+    trend,
+    className
 }: StatsCardProps) {
     return (
         <Card className={cn("transition-all duration-200 hover:shadow-lg hover:scale-[1.02] cursor-pointer shadow-sm border-0 bg-card", className)}>

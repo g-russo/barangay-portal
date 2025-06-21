@@ -73,7 +73,7 @@ export default function UsersIndex({ users, flash }: Props) {
             month: 'short',
             day: 'numeric',
         });
-    };    return (
+    }; return (
         <AppLayout
             breadcrumbs={[
                 { title: 'Dashboard', href: route('dashboard') },
@@ -83,7 +83,7 @@ export default function UsersIndex({ users, flash }: Props) {
             <Head title="Users" />
 
             <div className="flex h-full flex-1 flex-col p-8 space-y-8">
-                <PageHeader 
+                <PageHeader
                     title="Users"
                     description="Manage user accounts and permissions"
                 >
@@ -104,117 +104,117 @@ export default function UsersIndex({ users, flash }: Props) {
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="pt-2">
-                        <div className="rounded-md border">
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead>Name</TableHead>
-                                        <TableHead>Email</TableHead>
-                                        <TableHead>Status</TableHead>
-                                        <TableHead>Created</TableHead>
-                                        <TableHead className="text-right">Actions</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {users.data.length === 0 ? (
+                            <div className="rounded-md border">
+                                <Table>
+                                    <TableHeader>
                                         <TableRow>
-                                            <TableCell colSpan={5} className="text-center py-8">
-                                                No users found
-                                            </TableCell>
+                                            <TableHead>Name</TableHead>
+                                            <TableHead>Email</TableHead>
+                                            <TableHead>Status</TableHead>
+                                            <TableHead>Created</TableHead>
+                                            <TableHead className="text-right">Actions</TableHead>
                                         </TableRow>
-                                    ) : (
-                                        users.data.map((user) => (
-                                            <TableRow key={user.id}>
-                                                <TableCell className="font-medium">
-                                                    {user.name}
-                                                </TableCell>
-                                                <TableCell>{user.email}</TableCell>
-                                                <TableCell>
-                                                    <Badge
-                                                        variant={
-                                                            user.email_verified_at
-                                                                ? 'default'
-                                                                : 'secondary'
-                                                        }
-                                                    >
-                                                        {user.email_verified_at
-                                                            ? 'Verified'
-                                                            : 'Unverified'}
-                                                    </Badge>
-                                                </TableCell>
-                                                <TableCell>
-                                                    {formatDate(user.created_at)}
-                                                </TableCell>
-                                                <TableCell className="text-right">
-                                                    <div className="flex items-center justify-end gap-2">
-                                                        <Link href={route('users.show', user.id)}>
-                                                            <Button
-                                                                variant="ghost"
-                                                                size="sm"
-                                                            >
-                                                                <Eye className="h-4 w-4" />
-                                                            </Button>
-                                                        </Link>
-                                                        <Link href={route('users.edit', user.id)}>
-                                                            <Button
-                                                                variant="ghost"
-                                                                size="sm"
-                                                            >
-                                                                <Edit className="h-4 w-4" />
-                                                            </Button>
-                                                        </Link>
-                                                        <Button
-                                                            variant="ghost"
-                                                            size="sm"
-                                                            onClick={() => handleDelete(user.id)}
-                                                        >
-                                                            <Trash2 className="h-4 w-4" />
-                                                        </Button>
-                                                    </div>
+                                    </TableHeader>
+                                    <TableBody>
+                                        {users.data.length === 0 ? (
+                                            <TableRow>
+                                                <TableCell colSpan={5} className="text-center py-8">
+                                                    No users found
                                                 </TableCell>
                                             </TableRow>
-                                        ))
-                                    )}
-                                </TableBody>
-                            </Table>
-                        </div>
+                                        ) : (
+                                            users.data.map((user) => (
+                                                <TableRow key={user.id}>
+                                                    <TableCell className="font-medium">
+                                                        {user.name}
+                                                    </TableCell>
+                                                    <TableCell>{user.email}</TableCell>
+                                                    <TableCell>
+                                                        <Badge
+                                                            variant={
+                                                                user.email_verified_at
+                                                                    ? 'default'
+                                                                    : 'secondary'
+                                                            }
+                                                        >
+                                                            {user.email_verified_at
+                                                                ? 'Verified'
+                                                                : 'Unverified'}
+                                                        </Badge>
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        {formatDate(user.created_at)}
+                                                    </TableCell>
+                                                    <TableCell className="text-right">
+                                                        <div className="flex items-center justify-end gap-2">
+                                                            <Link href={route('users.show', user.id)}>
+                                                                <Button
+                                                                    variant="ghost"
+                                                                    size="sm"
+                                                                >
+                                                                    <Eye className="h-4 w-4" />
+                                                                </Button>
+                                                            </Link>
+                                                            <Link href={route('users.edit', user.id)}>
+                                                                <Button
+                                                                    variant="ghost"
+                                                                    size="sm"
+                                                                >
+                                                                    <Edit className="h-4 w-4" />
+                                                                </Button>
+                                                            </Link>
+                                                            <Button
+                                                                variant="ghost"
+                                                                size="sm"
+                                                                onClick={() => handleDelete(user.id)}
+                                                            >
+                                                                <Trash2 className="h-4 w-4" />
+                                                            </Button>
+                                                        </div>
+                                                    </TableCell>
+                                                </TableRow>
+                                            ))
+                                        )}
+                                    </TableBody>
+                                </Table>
+                            </div>
 
-                        {/* Pagination */}
-                        {users.last_page > 1 && (
-                            <div className="flex items-center justify-between px-2 py-4">
-                                <div className="text-sm text-muted-foreground">
-                                    Showing {((users.current_page - 1) * users.per_page) + 1} to{' '}
-                                    {Math.min(users.current_page * users.per_page, users.total)} of{' '}
-                                    {users.total} results
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    {users.links.map((link, index) => {
-                                        if (!link.url) {
+                            {/* Pagination */}
+                            {users.last_page > 1 && (
+                                <div className="flex items-center justify-between px-2 py-4">
+                                    <div className="text-sm text-muted-foreground">
+                                        Showing {((users.current_page - 1) * users.per_page) + 1} to{' '}
+                                        {Math.min(users.current_page * users.per_page, users.total)} of{' '}
+                                        {users.total} results
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        {users.links.map((link, index) => {
+                                            if (!link.url) {
+                                                return (
+                                                    <Button
+                                                        key={index}
+                                                        variant="ghost"
+                                                        size="sm"
+                                                        disabled
+                                                        dangerouslySetInnerHTML={{ __html: link.label }}
+                                                    />
+                                                );
+                                            }
+
                                             return (
-                                                <Button
-                                                    key={index}
-                                                    variant="ghost"
-                                                    size="sm"
-                                                    disabled
-                                                    dangerouslySetInnerHTML={{ __html: link.label }}
-                                                />
+                                                <Link key={index} href={link.url}>
+                                                    <Button
+                                                        variant={link.active ? 'default' : 'ghost'}
+                                                        size="sm"
+                                                        dangerouslySetInnerHTML={{ __html: link.label }}
+                                                    />
+                                                </Link>
                                             );
-                                        }
-
-                                        return (
-                                            <Link key={index} href={link.url}>
-                                                <Button
-                                                    variant={link.active ? 'default' : 'ghost'}
-                                                    size="sm"
-                                                    dangerouslySetInnerHTML={{ __html: link.label }}
-                                                />
-                                            </Link>
-                                        );
-                                    })}
-                                </div>
-                            </div>                        )}
-                    </CardContent>
-                </Card>
+                                        })}
+                                    </div>
+                                </div>)}
+                        </CardContent>
+                    </Card>
                 </Section>
             </div>
         </AppLayout>

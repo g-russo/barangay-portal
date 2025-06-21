@@ -21,7 +21,7 @@ const quickActions: QuickAction[] = [
     },
     {
         title: 'New Document',
-        href: '/documents/create', 
+        href: '/documents/create',
         icon: FileText,
         color: 'bg-green-500 hover:bg-green-600',
     },
